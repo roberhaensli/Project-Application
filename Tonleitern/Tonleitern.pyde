@@ -1,15 +1,18 @@
+#Variable für ausgewählten Ton und Tonart
 wunschTon = "C"
 wunschTonart = "ionisch"
 
-#[C, G, D, A, E, B, Fis, Cis, Gis, Dis, Ais, Ges, Des, As, Es, Bb, F]
+#Alle Töne nach Quintenzirkel sortiert
 toene = ["C", "G", "D", "A", "E", "B", "Fis", "Cis", "Gis", "Dis", "Ais", "Ges", "Des", "As", "Es", "Bb", "F"]
 tonartennamen = ["moll-harmonisch", "moll-melodisch", "dorisch", "phrygisch", "lydisch", "mixolydisch", "aeolisch", "ionisch"]
 
 
 def setup():
+    #Fenster erstellen
     size(900,600)
 
 def draw():
+    #Oberfläche zeichnen
     background(255,255,255)
     
     fill(0,0,0)
@@ -32,6 +35,9 @@ def draw():
     fill(255,255,255)
 
 
+#Funktion welche die aktuell ausgewählte (Wunschton/Wunschtonart) Tonleiter generiert.
+#Input: keine
+#Output: Tonleiter als String
 def tonleiter():
     outputText = ""
     
@@ -55,6 +61,10 @@ def tonleiter():
     
     return outputText
     
+    
+#Funktion welche das Raster mit den auswählbaren Tönen zeichnet
+#Input: X und Y Kooridnate oben links und Seitenlänge der Quadrate.
+#Output: keine
 def grid_toene(nullX, nullY, laenge):
     fill(255,255,255)
     toeneV = ["C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Bb", "B"]
@@ -66,6 +76,10 @@ def grid_toene(nullX, nullY, laenge):
             text(toeneV[6*j+i], 5+ nullX + i * (laenge +10)  , 60+ nullY + j * (laenge +10))
             fill(255,255,255)
 
+
+#Funktion welche das Raster mit den auswählbaren Tonarten zeichnet
+#Input: X und Y Kooridnate oben links und Höhe der Rechtecke.
+#Output: keine
 def grid_tonarten(nullX, nullY, laenge):
     fill(255,255,255)
     for i in range(4):
@@ -76,6 +90,7 @@ def grid_tonarten(nullX, nullY, laenge):
             text(tonartennamen[4*j+i], 10+ nullX + i * (laenge *2 +10), 40+ nullY + j * (laenge +10))
             fill(255,255,255)
 
+#Funktion welche die Felder auswählt wenn man mit der Maus draufklickt
 def mouseClicked():
     global wunschTon
     MatrixToene = [["C", "Cis", "D", "Dis", "E", "F"], ["Fis", "G", "Gis", "A", "Bb", "B"]]
